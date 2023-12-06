@@ -1,12 +1,33 @@
 <!doctype html>
 <html>
-	<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-		<title>Cloud Native Spring Personal Assistant</title>
-		<link rel="stylesheet" href="index.css">
-	</head>
-	<body>
-    <header>Cloud Native Spring Personal Assistant</header>
-		<main></main>
-		<script src="index.js" type="module"></script>
-	</body>
+    <head>
+        <title>Cloud Native Spring Personal Assistant</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <main>
+            <section class="personal-assistant-container">
+                <div class="personal-assistant-header">
+                    <img src="images/logo-cloud-native-spring.png" class="logo">
+                    <p class="sub-heading">Knowledge Bank</p>
+                </div>
+                <div class="personal-assistant-conversation-container" id="personal-assistant-conversation-container">
+                </div>
+                <form id="form" class="personal-assistant-input-container">
+                    <input name="user-input" type="text" id="user-input" required>
+                    <button id="submit-btn" class="submit-btn">
+                            <img
+                                src="images/send.svg"   
+                                class="send-btn-icon"
+                            >
+                    </button>
+                </form>
+            </section>
+        </main>
+        <script src="index.js" type="module"></script>
+    </body>
 </html>
