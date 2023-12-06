@@ -51,13 +51,6 @@ const chain = RunnableSequence.from([
   answerChain
 ])
 
-
-const response = await chain.invoke({
-  question: 'Which container orchestration tool will we use?'
-})
-
-console.log(response)
-
 async function progressConversation() {
   const userInput = document.getElementById('user-input')
   const personalAssistantConversation = document.getElementById('expert-conversation-container')
@@ -70,11 +63,13 @@ async function progressConversation() {
   personalAssistantConversation.appendChild(newHumanSpeechBubble)
   newHumanSpeechBubble.textContent = question
   personalAssistantConversation.scrollTop = personalAssistantConversation.scrollHeight
-
+  const response = await chain.invoke({
+    question
+  })
   // add AI message
   const newAiSpeechBubble = document.createElement('div')
   newAiSpeechBubble.classList.add('speech', 'speech-ai')
   personalAssistantConversation.appendChild(newAiSpeechBubble)
-  newAiSpeechBubble.textContent = result
+  newAiSpeechBubble.textContent = response
   personalAssistantConversation.scrollTop = personalAssistantConversation.scrollHeight
 }
