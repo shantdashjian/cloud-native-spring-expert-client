@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "A personal assistant to answer questions based on the knowledge provided in the book Cloud Native Spring in Action",
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
     "langchain": "^0.0.202",
     "pdf-parse": "^1.1.1"
   },
