@@ -3,7 +3,7 @@ export default function formatConversationHistory(messages) {
       if (i % 2 === 0){
           return `Human: ${message}`
       } else {
-          return `AI: ${message}`
+          return `Expert: ${message}`
       }
   }).join('\n')
 }

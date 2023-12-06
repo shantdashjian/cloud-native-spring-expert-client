@@ -15,6 +15,6 @@ const vectorStore = new SupabaseVectorStore(embeddings, {
   queryName: 'match_cloud_native_spring_documents'
 })
 
-const retriever = vectorStore.asRetriever()
+const retriever = vectorStore.asRetriever(6)
 
 export { retriever }
