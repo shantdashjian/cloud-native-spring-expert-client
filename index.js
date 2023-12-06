@@ -2,6 +2,7 @@ import { ChatOpenAI } from "langchain/chat_models/openai"
 import { PromptTemplate } from "langchain/prompts"
 import { StringOutputParser } from 'langchain/schema/output_parser'
 import { retriever } from "./utils/retreiver"
+import { combineDocuments } from "./utils/combineDocuments"
 
 document.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -16,7 +17,19 @@ const standaloneQuestionTemplate = 'Given a question, convert it to a standalone
 
 const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionTemplate)
 
-const chain = standaloneQuestionPrompt.pipe(llm).pipe(new StringOutputParser()).pipe(retriever)
+const answerTemplate = `You are a helpful and enthusiastic expert who can answer a given question about Cloud Native Spring based on the context provided. Try to find the answer in the context. If you really don't know the answer, say "I'm sorry, I don't know the answer to that." Don't try to make up an answer.
+context: {context}
+question: {question}
+answer: 
+`
+
+const answerPrompt = PromptTemplate.fromTemplate(answerTemplate)
+
+const chain = standaloneQuestionPrompt
+              .pipe(llm)
+              .pipe(new StringOutputParser())
+              .pipe(retriever)
+              .pipe(answerPrompt)
 
 const response = await chain.invoke({
     question: 'What are the goals of following the cloud native approach to software development?'
