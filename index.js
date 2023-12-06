@@ -3,6 +3,7 @@ import { PromptTemplate } from "langchain/prompts"
 import { StringOutputParser } from 'langchain/schema/output_parser'
 import { retriever } from "./utils/retreiver"
 import { combineDocuments } from "./utils/combineDocuments"
+import { RunnablePassthrough, RunnableSequence } from "langchain/schema/runnable"
 
 document.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -20,19 +21,39 @@ const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionT
 const answerTemplate = `You are a helpful and enthusiastic expert who can answer a given question about Cloud Native Spring based on the context provided. Try to find the answer in the context. If you really don't know the answer, say "I'm sorry, I don't know the answer to that." Don't try to make up an answer.
 context: {context}
 question: {question}
-answer: 
-`
+answer: `
 
 const answerPrompt = PromptTemplate.fromTemplate(answerTemplate)
 
-const chain = standaloneQuestionPrompt
-              .pipe(llm)
-              .pipe(new StringOutputParser())
-              .pipe(retriever)
-              .pipe(answerPrompt)
+const standaloneQuestionChain = standaloneQuestionPrompt
+  .pipe(llm)
+  .pipe(new StringOutputParser())
+
+const retrieverChain = RunnableSequence.from([
+  prevResult => prevResult.standalone_question,
+  retriever,
+  combineDocuments
+])
+
+const answerChain = answerPrompt
+  .pipe(llm)
+  .pipe(new StringOutputParser())
+
+const chain = RunnableSequence.from([
+  {
+    standalone_question: standaloneQuestionChain,
+    original_input: new RunnablePassthrough()
+  },
+  {
+    context: retrieverChain,
+    question: ({ original_input }) => original_input.question
+  },
+  answerChain
+])
+
 
 const response = await chain.invoke({
-    question: 'What are the goals of following the cloud native approach to software development?'
+  question: 'Which container orchestration tool will we use?'
 })
 
 console.log(response)
