@@ -3,17 +3,20 @@
   --light-text: #fefefe;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;  
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins';
 }
 
-main {    
+main {
   background-color: white;
   height: 100vh;
   display: flex;
@@ -21,51 +24,51 @@ main {
   justify-content: center;
 }
 
-/* personal-assistant elements */
+/* expert elements */
 
-.personal-assistant-container {
+.expert-container {
   background-color: #171f26;
   width: 360px;
   min-height: 380px;
   border-radius: var(--border-rad-lg);
-  padding: 1em;  
+  padding: 1em;
 }
 
-.personal-assistant-container > * {
-  padding: .5em;   
-}
+.expert-container>* {}
 
-.personal-assistant-header {
+.expert-header {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: .6em;
 }
 
 .logo {
-  width:  160px;
+  width: 100%;
+  border-radius: 0.6em;
 }
 
-.personal-assistant-conversation-container {
+.expert-conversation-container {
   height: 250px;
   overflow-y: scroll;
   margin: 1em 0;
 }
 
 /* stop ugly scroll bar on some browsers */
-.personal-assistant-conversation-container::-webkit-scrollbar {
+.expert-conversation-container::-webkit-scrollbar {
   display: none;
 }
 
-.personal-assistant-conversation-container::-moz-scrollbar {
+.expert-conversation-container::-moz-scrollbar {
   display: none;
 }
 
 .speech {
   padding: 1em;
-  max-width: 240px; 
+  /* max-width: 240px; */
   color: var(--light-text);
   min-width: 90%;
-  border-radius: var(--border-rad-lg); 
+  border-radius: var(--border-rad-lg);
   font-size: 1.07em;
 }
 
@@ -74,22 +77,23 @@ main {
 }
 
 .speech-ai {
-background: #334959;
+  background: #334959;
   border-top-left-radius: 0;
-  margin: 1.2em 1em 0 0; 
+  margin: 1.2em 1em 0 0;
 }
 
 .speech-human {
-  margin: 1.2em 0 0 1em; 
-background: #2f4f4f;
-  border-top-right-radius: 0; 
+  margin: 1.2em 0 0 1em;
+  background: #2f4f4f;
+  border-top-right-radius: 0;
 }
 
-.personal-assistant-input-container {
+.expert-input-container {
   display: flex;
 }
 
-input[type="text"], button {
+input[type="text"],
+button {
   background-color: transparent;
   border: 1px solid #586e88;
   border-radius: var(--border-rad-lg);
@@ -99,13 +103,13 @@ input[type="text"], button {
 input[type="text"] {
   color: var(--light-text);
   width: 100%;
-  border-right: 0; 
+  border-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 button {
-  border-left: 0; 
+  border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -119,7 +123,7 @@ button {
 .sub-heading {
   color: #999999;
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-size: 1.5rem;
   text-transform: uppercase;
   margin: 0;
 }
