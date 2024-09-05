@@ -1,5 +1,5 @@
 {
-  "name": "cloud-native-spring-expert",
+  "name": "cloud-native-spring-expert-client",
   "author": "Shant Dashjian",
   "version": "0.0.1",
   "description": "An expert to answer questions based on the knowledge provided in the book Cloud Native Spring in Action",
