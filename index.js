@@ -66,7 +66,7 @@ async function progressConversation() {
   const question = userInput.value
   userInput.value = ''
 
-  // add human message
+  // Add human message
   const newHumanSpeechBubble = document.createElement('div')
   newHumanSpeechBubble.classList.add('speech', 'speech-human')
   personalAssistantConversation.appendChild(newHumanSpeechBubble)
@@ -77,11 +77,11 @@ async function progressConversation() {
     conversation_history: formatConversationHistory(conversationHistory)
   })
 
-  // add to memory
+  // Add to memory
   conversationHistory.push(question)
   conversationHistory.push(response)
 
-  // add AI message
+  // Add AI message
   const newAiSpeechBubble = document.createElement('div')
   newAiSpeechBubble.classList.add('speech', 'speech-ai')
   personalAssistantConversation.appendChild(newAiSpeechBubble)
