@@ -17,7 +17,7 @@ An AI-powered app that answers questions based on the book Cloud Native Spring i
    
 1. The learner asks a question related to Cloud Native Spring and DevOps by typing it in the input field.
 2. They hit ENTER or click on the arrow button.
-3. The App responds with an answer based on tbe infomration in the book.
+3. The App responds with an answer based on the infomration in the book.
 
 ## Technologies Used
 1. HTML, CSS, and JavaScript.
