@@ -30,14 +30,15 @@ async function progressConversation() {
   let answer = ''
   try {
     const response = await fetch(workerUrl, options)
-    
+
     answer = await response.json()
     if (!response.ok) {
       throw new Error(answer.error)
     }
-  } catch(error) {
+  } catch (error) {
     answer = error
   }
+  
   // Add to memory
   conversationHistory.push(question)
   conversationHistory.push(answer)
