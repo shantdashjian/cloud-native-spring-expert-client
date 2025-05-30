@@ -1,7 +1,7 @@
 # Cloud Native Spring Expert
 An AI-powered app that answers questions based on the book Cloud Native Spring in Action. It is powered with OpenAI, LangChain, RAG, and Supabase. The app is built for personal, non-commercial, and educational purposes.
 
-![demo](demo/demo.gif "Demo")
+![demo](demo/demo.png "Demo")
 
 ## In This Document:
   - [Live Application URL](#live-application-url)
